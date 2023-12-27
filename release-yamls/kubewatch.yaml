@@ -1,0 +1,27 @@
+- name: update-kubewatch-cm
+  template: bulk-edit
+  arguments:
+    parameters:
+    - name: APP_NAMES
+      value: kubewatch
+    - name: ENV_NAMES
+      value: cd-devtroncd
+    - name: CM_NAMES
+      value: kubewatch-cm
+    - name: SECRET_NAMES
+      value: orchestrtor-secrets
+    - name: SECRET_DATA
+      value: "null"
+    - name: CM_DATA
+      value: '{"replace":{"DEMO_KEY":"DEMO_VALUE"}}'
+- name: kubewatch-release
+  dependencies: ["update-kubewatch-cm"]
+  template: trigger-deploy
+  arguments:
+    parameters:
+    - name: APP_NAME
+      value: kubewatch
+    - name: ENV_NAME
+      value: cd-devtroncd
+    - name: SOURCE_COMMIT_HASH
+      value: 1be6f58b3afb0b4827a370bc71740beec8247a68
