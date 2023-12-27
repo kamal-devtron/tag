@@ -8,10 +8,6 @@
       value: cd-devtroncd
     - name: CM_NAMES
       value: kubewatch-cm
-    - name: SECRET_NAMES
-      value: orchestrtor-secrets
-    - name: SECRET_DATA
-      value: "null"
     - name: CM_DATA
       value: '{"replace":{"DEMO_KEY":"DEMO_VALUE"}}'
 - name: kubewatch-release
