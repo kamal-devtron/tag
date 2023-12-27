@@ -1,4 +1,4 @@
-orchestrator: no
+orchestrator: yes
 git-sensor: yes
 dashboard: no
 notifier: yes

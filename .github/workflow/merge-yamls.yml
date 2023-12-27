@@ -30,9 +30,12 @@ jobs:
         fi
     - name: Merge all tasks
       run: |
+        git checkout release-bot
         # Install required dependencies
         pip3 install ruamel.yaml
         python3 merge-yamls.py
         git add .
         git commit -m "Merged all release yamls"
+        git checkout sample-yamls
+        
         git push origin release-bot
