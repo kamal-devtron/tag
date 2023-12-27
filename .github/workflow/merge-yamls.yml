@@ -1,0 +1,38 @@
+name: Merge all dev yamls to workflow dag
+
+on:
+  pull_request_target:
+    types:
+      - closed
+    branches:
+      - release-bot
+
+jobs:
+  create-release-tag:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        ref: release-bot
+
+    - name: Set up Git with user info
+      run: |
+        git config user.email "jatin@devtron.ai"
+        git config user.name "jatin-jangir"
+        git fetch --tags
+    - name: Check if PR is merged into release-bot
+      run: |
+        if [ "${{ github.event_name }}" != "pull_request" ] || [ "${{ github.event.pull_request.merged }}" != "true" ] || [ "${{ github.event.pull_request.base.ref }}" != "release-bot" ]; then
+          echo "PR not merged into main, skipping the workflow."
+          exit 78  # Exit with a neutral status code (78 is used here, but you can choose any other non-zero value)
+        fi
+    - name: Merge all tasks
+      run: |
+        # Install required dependencies
+        pip3 install ruamel.yaml
+        python3 merge-yamls.py
+        git add .
+        git commit -m "Merged all release yamls"
+        git push origin release-bot
