@@ -36,6 +36,11 @@ jobs:
         python3 merge-yamls.py
         git add .
         git commit -m "Merged all release yamls"
-        git checkout sample-yamls
-        
         git push origin release-bot
+        git checkout release-dev
+        git checkout sample-yamls -- kustomize/base/release-workflow.yaml
+        git checkout sample-yamls -- release-values.yaml
+        git checkout sample-yamls -- release-yamls
+        git add .
+        git commit -m "Reset release-dev branch to sample-yamls"
+        git push origin release-dev
