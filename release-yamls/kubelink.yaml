@@ -1,22 +1,22 @@
-- name: update-orchestrator-cm
+- name: update-kubelink-cm
   template: bulk-edit
   arguments:
     parameters:
     - name: APP_NAMES
-      value: orchestrator
+      value: kubelink
     - name: ENV_NAMES
       value: cd-devtroncd
     - name: CM_NAMES
-      value: orchestrator-cm
+      value: kubelink-cm
     - name: CM_DATA
       value: '{"replace":{"DEMO_KEY":"DEMO_VALUE"}}'
-- name: orchestrator-release
-  dependencies: ["update-orchestrator-cm"]
+- name: kubelink-release
+  dependencies: ["update-kubelink-cm"]
   template: trigger-deploy
   arguments:
     parameters:
     - name: APP_NAME
-      value: orchestrator
+      value: kubelink
     - name: ENV_NAME
       value: cd-devtroncd
     - name: SOURCE_COMMIT_HASH
