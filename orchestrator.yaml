@@ -1,0 +1,27 @@
+- name: update-orchestrator-cm
+  template: bulk-edit
+  arguments:
+    parameters:
+    - name: APP_NAMES
+      value: deploy-test
+    - name: ENV_NAMES
+      value: devtron-dev
+    - name: CM_NAMES
+      value: test-cm
+    - name: SECRET_NAMES
+      value: test
+    - name: SECRET_DATA
+      value: '{"replace":{"SHOW_HELM_APPS":"false","NEW_KEY":"YES","ANOTHER_KEY":"value2"},"add":{"HEY_THERE":"Jadoo"}}'
+    - name: CM_DATA
+      value: '{"replace":{"SHOW_HELM_APPS":"false","NEW_KEY":"YES","ANOTHER_KEY":"value2"},"add":{"HEY_THERE":"Jadoo"},"remove":{"test":"value"}}'
+- name: orchestrator-release
+  depends: update-orchestrator-cm
+  template: trigger-deploy
+  arguments:
+    parameters:
+    - name: APP_NAME
+      value: deploy-test
+    - name: ENV_NAME
+      value: devtron-dev
+    - name: SOURCE_COMMIT_HASH
+      value: 1be6f58b3afb0b4827a370bc71740beec8247a68
