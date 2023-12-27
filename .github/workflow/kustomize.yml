@@ -1,0 +1,62 @@
+name: Create Release Tag for kustomize
+
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  create-release-tag:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        ref: main
+
+    - name: Set up Git with user info
+      run: |
+        git config user.email "jatin@devtron.ai"
+        git config user.name "jatin-jangir"
+        git fetch --tags
+    - name: Check if PR is merged into main
+      run: |
+        if [ "${{ github.event_name }}" != "pull_request" ] || [ "${{ github.event.pull_request.merged }}" != "true" ] || [ "${{ github.event.pull_request.base.ref }}" != "main" ]; then
+          echo "PR not merged into main, skipping the workflow."
+          exit 78  # Exit with a neutral status code (78 is used here, but you can choose any other non-zero value)
+        fi
+    - name: Create Release Tag
+      run: |
+        # Get the PR title and replace spaces with underscores
+        PR_TITLE=$(echo '${{ github.event.pull_request.title }}' | tr -d '[:space:]' | tr ' ' '_')
+
+        git checkout -b releaser-test
+        
+        OVERLAYS_DIR="overlays"
+        OUTPUT_DIR="DAG"
+        
+        # Ensure the output directory exists
+        mkdir -p "$OUTPUT_DIR"
+        
+        # Iterate over folders in the overlays directory
+        for folder in "$OVERLAYS_DIR"/*; do
+            if [ -d "$folder" ]; then
+                folder_name=$(basename "$folder")
+                output_folder="$OUTPUT_DIR/$folder_name"
+        
+                # Run kustomize for the current folder
+                kustomize build "$folder" -o "$output_folder"
+        
+                echo "Kustomize completed for $folder_name. Output stored in $output_folder"
+            fi
+        done
+        git add -A $OUTPUT_DIR   
+        git commit -m "Add release for ${{ github.event.pull_request.title }} in $PR_TITLE" 
+
+        # Create a new tag using the PR title
+        git tag -a $PR_TITLE -m 'Release $PR_TITLE'
+
+        # Push the tag to the repository
+        git push origin $PR_TITLE
+
