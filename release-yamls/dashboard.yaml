@@ -1,22 +1,22 @@
-- name: update-orchestrator-cm
+- name: update-dashboard-cm
   template: bulk-edit
   arguments:
     parameters:
     - name: APP_NAMES
-      value: orchestrator
+      value: dashboard
     - name: ENV_NAMES
       value: cd-devtroncd
     - name: CM_NAMES
-      value: orchestrator-cm
+      value: dashboard-cm
     - name: CM_DATA
       value: '{"replace":{"DEMO_KEY":"DEMO_VALUE"}}'
-- name: orchestrator-release
-  dependencies: ["update-orchestrator-cm"]
+- name: dashboard-release
+  dependencies: ["update-dashboard-cm"]
   template: trigger-deploy
   arguments:
     parameters:
     - name: APP_NAME
-      value: orchestrator
+      value: dashboard
     - name: ENV_NAME
       value: cd-devtroncd
     - name: SOURCE_COMMIT_HASH
