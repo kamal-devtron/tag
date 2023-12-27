@@ -1,0 +1,27 @@
+- name: update-orchestrator-cm
+  template: bulk-edit
+  arguments:
+    parameters:
+    - name: APP_NAMES
+      value: orchestrator
+    - name: ENV_NAMES
+      value: cd-devtroncd
+    - name: CM_NAMES
+      value: orchestrator-cm
+    - name: SECRET_NAMES
+      value: orchestrtor-secrets
+    - name: SECRET_DATA
+      value: "null"
+    - name: CM_DATA
+      value: '{"replace":{"DEMO_KEY":"DEMO_VALUE"}}'
+- name: orchestrator-release
+  dependencies: ["update-orchestrator-cm"]
+  template: trigger-deploy
+  arguments:
+    parameters:
+    - name: APP_NAME
+      value: orchestrator
+    - name: ENV_NAME
+      value: cd-devtroncd
+    - name: SOURCE_COMMIT_HASH
+      value: 1be6f58b3afb0b4827a370bc71740beec8247a68
