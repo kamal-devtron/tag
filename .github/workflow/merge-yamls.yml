@@ -44,3 +44,5 @@ jobs:
         git add .
         git commit -m "Reset release-dev branch to sample-yamls"
         git push origin release-dev
+      env:
+        GH_TOKEN: ${{ secrets.GIT_TOKEN }}
