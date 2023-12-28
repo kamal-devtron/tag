@@ -20,7 +20,7 @@ spec:
   arguments:
     parameters:
     - name: DEVTRON_BASE_URL
-      value: staging.devtron.info
+      value: devtron-orchestrator-staging-dcd-service.devtroncd
     - name: USE_HTTPS
       value: "true"
     - name: LOG_LEVEL
