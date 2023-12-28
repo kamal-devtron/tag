@@ -20,7 +20,7 @@ spec:
   arguments:
     parameters:
     - name: DEVTRON_BASE_URL
-      value: demo.example.com
+      value: staging.devtron.info
     - name: USE_HTTPS
       value: "true"
     - name: LOG_LEVEL
