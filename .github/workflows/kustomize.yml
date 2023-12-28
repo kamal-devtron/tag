@@ -24,7 +24,7 @@ jobs:
         git fetch --tags
     - name: Check if PR is merged into main
       run: |
-        if [ "${{ github.event_name }}" != "pull_request" ] || [ "${{ github.event.pull_request.merged }}" != "true" ] || [ "${{ github.event.pull_request.base.ref }}" != "main" ]; then
+        if [ "${{ github.event_name }}" != "pull_request_target" ] || [ "${{ github.event.pull_request.merged }}" != "true" ] || [ "${{ github.event.pull_request.base.ref }}" != "main" ]; then
           echo "PR not merged into main, skipping the workflow."
           exit 78  # Exit with a neutral status code (78 is used here, but you can choose any other non-zero value)
         fi
