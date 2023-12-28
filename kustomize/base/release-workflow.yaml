@@ -42,7 +42,7 @@ spec:
           - name: CM_NAMES
             value: configmap-1
           - name: CM_DATA
-            value: '{"replace":{"DEMO_KEY":"DEMO_VALUE"}}'
+            value: '{"replace":{"DEMO_KEY_2":"DEMO_VALUE_2"}}'
       - name: orchestrator-release
         dependencies: ["update-orchestrator-cm", "kubelink-release"]
         template: trigger-deploy
@@ -53,7 +53,7 @@ spec:
           - name: ENV_NAME
             value: devtron-demo
           - name: SOURCE_COMMIT_HASH
-            value: 727195508205a6b9a060e8cdb37251f12159e3b1
+            value: 5a7e37e7addb46f5337a4df1518a1b29f817d18f
       - name: update-kubelink-cm
         template: bulk-edit
         arguments:
@@ -65,7 +65,7 @@ spec:
           - name: CM_NAMES
             value: configmap-2
           - name: CM_DATA
-            value: '{"replace":{"DEMO_KEY":"DEMO_VALUE"}}'
+            value: '{"replace":{"DEMO_KEY_2":"DEMO_VALUE_2"}}'
       - name: kubelink-release
         dependencies: ["update-kubelink-cm"]
         template: trigger-deploy
@@ -76,7 +76,7 @@ spec:
           - name: ENV_NAME
             value: devtron-demo
           - name: SOURCE_COMMIT_HASH
-            value: 727195508205a6b9a060e8cdb37251f12159e3b1
+            value: 5a7e37e7addb46f5337a4df1518a1b29f817d18f
   - name: notify
     steps:
     - - name: notify-success
