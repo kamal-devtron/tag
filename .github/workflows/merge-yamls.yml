@@ -8,7 +8,7 @@ on:
       - release-bot
 
 jobs:
-  create-release-tag:
+  merge-all-prs:
     runs-on: ubuntu-latest
 
     steps:
