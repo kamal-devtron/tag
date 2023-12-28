@@ -3,21 +3,21 @@
   arguments:
     parameters:
     - name: APP_NAMES
-      value: release-app-1
+      value: orchestrator
     - name: ENV_NAMES
-      value: devtron-demo
+      value: cd-devtroncd
     - name: CM_NAMES
-      value: configmap-1
+      value: orchestrator-cm
     - name: CM_DATA
       value: '{"replace":{"DEMO_KEY":"DEMO_VALUE"}}'
 - name: orchestrator-release
-  dependencies: ["update-orchestrator-cm", "kubelink-release"]
+  dependencies: ["update-orchestrator-cm"]
   template: trigger-deploy
   arguments:
     parameters:
     - name: APP_NAME
       value: orchestrator
     - name: ENV_NAME
-      value: devtron-demo
+      value: cd-devtroncd
     - name: SOURCE_COMMIT_HASH
-      value: 727195508205a6b9a060e8cdb37251f12159e3b1
+      value: 1be6f58b3afb0b4827a370bc71740beec8247a68
