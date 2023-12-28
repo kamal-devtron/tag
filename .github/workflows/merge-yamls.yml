@@ -37,6 +37,7 @@ jobs:
         git add .
         git commit -m "Merged all release yamls"
         git push origin release-bot
+        git branch release-dev refs/remotes/origin/release-dev
         git checkout release-dev
         git checkout sample-yamls -- kustomize/base/release-workflow.yaml
         git checkout sample-yamls -- release-values.yaml
