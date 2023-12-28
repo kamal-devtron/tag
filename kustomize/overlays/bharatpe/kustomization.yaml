@@ -9,5 +9,16 @@ labels:
 resources:
 - ../../base/
 
+patches:
+- patch: |-
+    - op: replace
+      path: /spec/arguments/parameters/3/value
+      value: "bharatpe"
+  target:
+    group: argoproj.io
+    version: v1alpha1
+    kind: Workflow
+    name: release
+
 namePrefix: bp-
 nameSuffix: -wf
