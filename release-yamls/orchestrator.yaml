@@ -11,7 +11,7 @@
     - name: CM_DATA
       value: '{"replace":{"DEMO_KEY":"DEMO_VALUE"}}'
 - name: orchestrator-release
-  dependencies: ["update-orchestrator-cm"]
+  dependencies: ["update-orchestrator-cm","kubelink-release"]
   template: trigger-deploy
   arguments:
     parameters:
