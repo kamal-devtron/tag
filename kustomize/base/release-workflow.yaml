@@ -22,7 +22,7 @@ spec:
     - name: DEVTRON_BASE_URL
       value: devtron-orchestrator-staging-dcd-service.devtroncd
     - name: USE_HTTPS
-      value: "true"
+      value: "false"
     - name: LOG_LEVEL
       value: "-1"
     - name: ENTERPRISE_NAME
