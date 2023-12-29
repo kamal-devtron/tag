@@ -1,0 +1,52 @@
+name: Enterprise Task
+description: "Describe the task"
+title: "ENTT: "
+assignees: ["prakarsh-dt"]
+projects: ["Devops"]
+labels: ["ENT"]
+body:
+  - type: dropdown
+    id: enterprise-name
+    attributes:
+      label: enterprise-name
+      description: Which Enterprise is this task related to
+      options:
+        - Others (ENT)
+        - Others (OSS)
+        - 1MG
+        - 73Strings
+        - Ather
+        - Bharatpe
+        - BirdEye
+        - BlueCopa
+        - Cyble
+        - Delhivery
+        - Delhivery-Platform
+        - Empuls
+        - OTPLess
+        - TheKhelGroup
+        - Lemnisk
+  - type: input
+    id: zoho-ticket
+    attributes:
+      label: Zoho Ticket ID (If exists)
+      description: ZohoDesk ticket ID
+      placeholder: #11
+    validations:
+      required: false
+  - type: textarea
+    id: task-description
+    validations:
+      required: true
+    attributes:
+      label: "Task description"
+      description: "A clear and concise description of what the task is."
+      placeholder: "You should add ..."
+  - type: textarea
+    id: tasklist
+    validations:
+      required: false
+    attributes:
+      label: "Subtasks List (If any)"
+      description: "A clear list of sub-tasks if any. The list items may contain the link to other github issues or just the text."
+      placeholder: "- [ ]  https://github.com/devtron-labs/devtron/issues/4482 (Sub-task link, the sub task is automatically marked completed when the issue is closed )"
