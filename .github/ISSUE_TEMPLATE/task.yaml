@@ -4,10 +4,14 @@ title: "TASK: "
 assignees: ["prakarsh-dt",]
 projects: ["Devops"]
 body:
-  - type: markdown
+  - type: markdown assignees
     attributes:
       value: |
         Thanks for taking the time to fill out our feature request form 🙏
+  - type: assignees
+    id: assignees
+    validations:
+      required: true
   - type: textarea
     id: task-description
     validations:
