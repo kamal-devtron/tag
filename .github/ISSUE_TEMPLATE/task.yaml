@@ -17,6 +17,6 @@ body:
     validations:
       required: false
     attributes:
-      label: "List of Subtasks if any"
+      label: "Subtask (If any)"
       description: "A clear list of sub-tasks if any. The list items may contain the link to other github issues or just the text."
       placeholder: "- [ ]  https://github.com/devtron-labs/devtron/issues/4482 (Sub-task link, the sub task is automatically marked completed when the issue is closed )"
