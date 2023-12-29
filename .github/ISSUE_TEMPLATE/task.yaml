@@ -2,7 +2,7 @@ name: Task
 description: "Describe the task"
 title: "TASK: "
 assignees: ["prakarsh-dt",]
-projects: ["Devops"]
+projects: ["devtron-labs/projects/6"]
 body:
   - type: textarea
     id: task-description
