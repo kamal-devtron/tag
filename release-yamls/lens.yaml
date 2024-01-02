@@ -4,8 +4,6 @@
     parameters:
     - name: APP_NAMES
       value: lens
-    - name: ENV_NAMES
-      value: cd-devtroncd
     - name: CM_NAMES
       value: lens-cm
     - name: CM_DATA
@@ -17,7 +15,5 @@
     parameters:
     - name: APP_NAME
       value: lens
-    - name: ENV_NAME
-      value: cd-devtroncd
     - name: SOURCE_COMMIT_HASH
       value: 1be6f58b3afb0b4827a370bc71740beec8247a68

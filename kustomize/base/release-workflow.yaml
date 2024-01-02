@@ -27,6 +27,8 @@ spec:
       value: "-1"
     - name: ENTERPRISE_NAME
       value: devtron
+    - name: ENV_NAME
+      value: cd-devtroncd
   templates:
   - name: release
     dag:
@@ -87,9 +89,9 @@ spec:
       - name: APP_NAMES
         value: "{{inputs.parameters.APP_NAMES}}"
       - name: ENV_NAMES
-        value: "{{inputs.parameters.ENV_NAMES}}"
+        value: "{{workflow.parameters.ENV_NAME}}"
       - name: ENV_IDS
-        value: "{{inputs.parameters.ENV_IDS}}"
+        value: "{{workflow.parameters.ENV_ID}}"
       - name: IS_GLOBAL
         value: "{{inputs.parameters.IS_GLOBAL}}"
       - name: CM_NAMES
@@ -127,7 +129,7 @@ spec:
       - name: APP_NAME
         value: "{{inputs.parameters.APP_NAME}}"
       - name: ENV_NAME
-        value: "{{inputs.parameters.ENV_NAME}}"
+        value: "{{workflow.parameters.ENV_NAME}}"
       - name: SOURCE_COMMIT_HASH
         value: "{{inputs.parameters.SOURCE_COMMIT_HASH}}"
       - name: TIMEOUT_SECONDS
