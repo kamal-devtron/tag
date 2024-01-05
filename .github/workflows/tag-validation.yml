@@ -1,0 +1,42 @@
+name: Validation for tag to be created
+
+on:
+  pull_request_target:
+    types:
+      - opened
+      - edited
+      - reopened
+      - synchronize
+    branches:
+      - main
+
+jobs:
+  validate-tag:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        ref: main
+
+    - name: Fetch all tags from remote
+      run: |
+        git config user.email "systems@devtron.ai"
+        git config user.name "systemsdt"
+        git fetch --tags
+    - name: Check if tag exists in the list
+      run: |
+        # Get the PR title and replace spaces with underscores
+        PR_TITLE=$(echo '${{ github.event.pull_request.title }}' | tr -d '[:space:]' | tr ' ' '_')
+        git tag -l | grep ${PR_TITLE}
+        EXIT_CODE=$(echo $?)
+        if [[ $EXIT_CODE == 0 ]]
+        then
+        echo "Tag already exists, Aborting merge"
+        exit $EXIT_CODE
+        else
+        echo "Tag doesn't exist, Good to go"
+        exit 0
+        fi
+
