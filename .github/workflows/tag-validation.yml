@@ -30,7 +30,7 @@ jobs:
         set +e
         # Check whether to go for tag validation or not
         PR_TITLE="${{ github.event.pull_request.title }})"
-        PR_TITLE_LOWER=$(echo "$PR" | sed -e 's/\(.*\)/\L\1/')
+        PR_TITLE_LOWER=$(echo "$PR_TITLE" | sed -e 's/\(.*\)/\L\1/')
         if [[ "$PR_TITLE_LOWER" == *"feat:"* || "$PR_TITLE_LOWER" == *"feature:"* || "$PR_TITLE_LOWER" == *"fix:"* || "$PR_TITLE_LOWER" == *"fixes:"* ]]
         then
         echo "PR is not of release type, Skipping tag validation"
