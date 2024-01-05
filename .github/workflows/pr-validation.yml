@@ -43,6 +43,7 @@ jobs:
         if [[ $TOTAL_PRS -gt 1 ]]
         then
         echo "Please close other open PRs for release-dev first, total open PRs: ${TOTAL_OPEN_PRS}"
+        Use this url to check those PRs: https://github.com/devtron-labs/enterprise-release/pulls?q=is%3Apr+is%3Aopen+base%3Arelease-dev
         gh pr edit $PRNUM --add-label "PR:validation-failed"
         exit 1
         else
