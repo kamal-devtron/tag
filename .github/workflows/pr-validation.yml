@@ -1,0 +1,52 @@
+name: Validate Pull Request
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - edited
+      - reopened
+      - unlabeled
+    branches:    
+      - 'release-dev'
+  
+jobs:
+  validate-PR:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      contents: read
+      pull-requests: write
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Validate if any other PR is open
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+        PR_BODY: ${{ github.event.pull_request.body }}
+        url: ${{ github.event.pull_request.url }}
+        PRNUM: ${{ github.event.pull_request.number }}
+        TITLE: ${{ github.event.pull_request.title }}
+      run: |
+        set -x
+        # Check if Ready to Merge Label already exists
+        gh pr view $PRNUM --json=labels | jq '.labels[].name' | grep -i "PR:Ready-to-Merge"
+        EXIT_CODE=$(echo $?)
+        if [[ $EXIT_CODE == 0 ]]
+        then
+        echo "Merge label already exists, Good to go"
+        else
+        TOTAL_OPEN_PRS=$(gh pr list --base release-dev --state open | wc -l)
+        if [[ $TOTAL_PRS -gt 1 ]]
+        then
+        echo "Please close other open PRs for release-dev first, total open PRs: ${TOTAL_OPEN_PRS}"
+        gh pr edit $PRNUM --add-label "PR:validation-failed"
+        exit 1
+        else
+        gh pr edit $PRNUM --remove-label "PR:validation-failed"
+        gh pr edit $PRNUM --add-label "PR:Ready-to-Merge"
+        fi
+        fi

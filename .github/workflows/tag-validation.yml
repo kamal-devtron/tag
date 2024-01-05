@@ -38,4 +38,5 @@ jobs:
         else
         echo "Tag doesn't exist, Good to go"
         exit 0
+        fi
 
