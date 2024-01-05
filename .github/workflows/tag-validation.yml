@@ -27,6 +27,7 @@ jobs:
         git fetch --tags
     - name: Check if tag exists in the list
       run: |
+        set -ex
         # Get the PR title and replace spaces with underscores
         PR_TITLE=$(echo '${{ github.event.pull_request.title }}' | tr -d '[:space:]' | tr ' ' '_')
         git tag -l | grep ${PR_TITLE}
