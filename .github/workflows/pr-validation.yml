@@ -31,6 +31,7 @@ jobs:
         PRNUM: ${{ github.event.pull_request.number }}
         TITLE: ${{ github.event.pull_request.title }}
       run: |
+        set +e
         set -x
         # Check if Ready to Merge Label already exists
         gh pr view $PRNUM --json=labels | jq '.labels[].name' | grep -i "PR:Ready-to-Merge"

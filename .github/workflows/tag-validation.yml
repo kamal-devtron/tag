@@ -27,17 +27,34 @@ jobs:
         git fetch --tags
     - name: Check if tag exists in the list
       run: |
-        set -ex
-        # Get the PR title and replace spaces with underscores
-        PR_TITLE=$(echo '${{ github.event.pull_request.title }}' | tr -d '[:space:]' | tr ' ' '_')
+        set +e
+        # Check whether to go for tag validation or not
+        PR_TITLE="${{ github.event.pull_request.title }})"
+        PR_TITLE_LOWER=$(echo "$PR" | sed -e 's/\(.*\)/\L\1/')
+        if [[ "$PR_TITLE_LOWER" == *"feat:"* || "$PR_TITLE_LOWER" == *"feature:"* || "$PR_TITLE_LOWER" == *"fix:"* || "$PR_TITLE_LOWER" == *"fixes:"* ]]
+        then
+        echo "PR is not of release type, Skipping tag validation"
+        exit 0
+        else
+        # Get the PR title and replace spaces with hyphens
+        PR_TITLE=$(echo '${{ github.event.pull_request.title }}' | tr ' ' '-')
         git tag -l | grep ${PR_TITLE}
         EXIT_CODE=$(echo $?)
         if [[ $EXIT_CODE == 0 ]]
         then
         echo "Tag already exists, Aborting merge"
-        exit $EXIT_CODE
+        exit 1
         else
         echo "Tag doesn't exist, Good to go"
-        exit 0
+        # Check if follows regex
+        TAG_REGEX='^v[0-9]{1,2}.[0-9]{1,2}.[0-9]{1,2}$'
+        if [[ $PR_TITLE =~ $TAG_REGEX ]]
+        then
+        echo "Tag follows release pattern, Ready to merge"
+        else
+        echo "Tag doesn't follow release pattern, please check"
+        exit 1
+        fi
+        fi
         fi
 

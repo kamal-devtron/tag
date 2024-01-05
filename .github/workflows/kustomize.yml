@@ -30,8 +30,8 @@ jobs:
         fi
     - name: Create Release Tag
       run: |
-        # Get the PR title and replace spaces with underscores
-        PR_TITLE=$(echo '${{ github.event.pull_request.title }}' | tr -d '[:space:]' | tr ' ' '_')
+        # Get the PR title and replace spaces with hyphens
+        PR_TITLE=$(echo '${{ github.event.pull_request.title }}' | tr ' ' '-')
 
         git checkout -b tag-releaser
         cd kustomize
