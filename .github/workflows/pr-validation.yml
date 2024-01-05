@@ -41,7 +41,7 @@ jobs:
         echo "Merge label already exists, Good to go"
         else
         TOTAL_OPEN_PRS=$(gh pr list --base release-dev --state open | wc -l)
-        if [[ $TOTAL_PRS -gt 1 ]]
+        if [[ $TOTAL_OPEN_PRS -gt 1 ]]
         then
         echo "Please close other open PRs for release-dev first, total open PRs: ${TOTAL_OPEN_PRS}"
         Use this url to check those PRs: https://github.com/devtron-labs/enterprise-release/pulls?q=is%3Apr+is%3Aopen+base%3Arelease-dev
