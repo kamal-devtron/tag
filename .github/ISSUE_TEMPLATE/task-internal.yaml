@@ -1,23 +1,24 @@
-name: Infra Task
-description: "Describe the task"
-title: "INFRA: "
-assignees: ["prakarsh-dt"]
+name: Internal Tasks
+description: "Tasks related to internal activities"
+title: "INTT: "
+assignees: ["prakarsh-dt",]
 projects: ["devtron-labs/6"]
-labels: ["INFRA"]
+labels: ["INTERNAL"]
 body:
   - type: dropdown
-    id: provider-name
+    id: task-type
     attributes:
-      label: Cloud provider name
-      description: Which Cloud provider is this task related to
+      label: Task type
+      description: Which type of task is this
       options:
-        - AWS
-        - Azure
-        - GCP
-        - On premise
-        - OCP
-        - Others
-
+        - Devtron Product
+        - Cleanup
+        - Developers queries
+        - QA queries
+        - Security
+        - Compliances
+        - Installer
+        - Releases
   - type: textarea
     id: task-description
     validations:
@@ -31,6 +32,6 @@ body:
     validations:
       required: false
     attributes:
-      label: "Subtasks List (If any)"
+      label: "Subtask (If any)"
       description: "A clear list of sub-tasks if any. The list items may contain the link to other github issues or just the text."
       placeholder: "- [ ]  https://github.com/devtron-labs/devtron/issues/4482 (Sub-task link, the sub task is automatically marked completed when the issue is closed )"
