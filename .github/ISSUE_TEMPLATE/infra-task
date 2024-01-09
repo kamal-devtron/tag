@@ -6,10 +6,10 @@ projects: ["devtron-labs/6"]
 labels: ["INFRA"]
 body:
   - type: dropdown
-    id: enterprise-name
+    id: provider-name
     attributes:
-      label: enterprise-name
-      description: Which Enterprise is this task related to
+      label: Cloud provider name
+      description: Which Cloud provider is this task related to
       options:
         - AWS
         - Azure
