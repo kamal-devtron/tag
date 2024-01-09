@@ -2,7 +2,7 @@ name: Enterprise Task
 description: "Describe the task"
 title: "ENTT: "
 assignees: ["prakarsh-dt"]
-projects: ["Devops"]
+projects: ["devtron-labs/6"]
 labels: ["ENT"]
 body:
   - type: dropdown
