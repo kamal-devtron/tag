@@ -1,5 +1,5 @@
 name: Infra Task
-description: "Describe the task"
+description: "Tasks related to Infrastructure"
 title: "INFRA: "
 assignees: ["prakarsh-dt"]
 projects: ["devtron-labs/6"]
