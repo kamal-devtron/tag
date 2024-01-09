@@ -3,6 +3,7 @@ description: "Tasks related to internal activities"
 title: "INTT: "
 assignees: ["prakarsh-dt",]
 projects: ["devtron-labs/6"]
+labels: ["INTERNAL"]
 body:
   - type: dropdown
     id: task-type
