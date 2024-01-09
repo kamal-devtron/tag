@@ -1,7 +1,7 @@
 name: Enterprise Task
 description: "Tasks related to an Enterprise"
 title: "ENTT: "
-assignees: ["prakarsh-dt"]
+assignees: ["prakarsh-dt","pawan-59"]
 projects: ["devtron-labs/6"]
 labels: ["ENTERPRISE"]
 body:
