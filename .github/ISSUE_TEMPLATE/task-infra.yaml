@@ -1,7 +1,7 @@
 name: Infra Task
 description: "Tasks related to Infrastructure"
 title: "INFRA: "
-assignees: ["prakarsh-dt"]
+assignees: ["prakarsh-dt","pawan-mehta-dt"]
 projects: ["devtron-labs/6"]
 labels: ["INFRA"]
 body:

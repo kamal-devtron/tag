@@ -1,7 +1,7 @@
 name: Enterprise Task
 description: "Tasks related to an Enterprise"
 title: "ENTT: "
-assignees: ["prakarsh-dt"]
+assignees: ["prakarsh-dt","pawan-59"]
 projects: ["devtron-labs/6"]
 labels: ["ENTERPRISE"]
 body:
@@ -26,6 +26,22 @@ body:
         - OTPLess
         - TheKhelGroup
         - Lemnisk
+  - type: dropdown
+    id: task-type
+    attributes:
+      label: Task type
+      description: Which type of task is this
+      options:
+        - Devtron Product
+        - Cleanup
+        - Developers queries
+        - QA queries
+        - Security
+        - Compliances
+        - Installer
+        - Releases
+        - Automation
+        - SRE
   - type: input
     id: zoho-ticket
     attributes:

@@ -1,9 +1,9 @@
-name: Internal Tasks
-description: "Tasks related to internal activities"
-title: "INTT: "
-assignees: ["prakarsh-dt","pawan-mehta-dt"]
+name: Sales/Marketing Tasks
+description: "Tasks related to Sales/Marketing activities"
+title: "SMAR: "
+assignees: ["prakarsh-dt","Abhinav-26"]
 projects: ["devtron-labs/6"]
-labels: ["INTERNAL"]
+labels: ["SALES/MARKETING"]
 body:
   - type: dropdown
     id: task-type
@@ -11,15 +11,13 @@ body:
       label: Task type
       description: Which type of task is this
       options:
-        - Devtron Product
-        - Cleanup
-        - Developers queries
-        - QA queries
-        - Security
-        - Compliances
-        - Installer
-        - Releases
-        - Automation
+        - Product Demo
+        - Sales 
+        - Partnership
+        - Pre-sales
+        - Onboarding
+        - Cadence call
+
   - type: textarea
     id: task-description
     validations:

@@ -1,9 +1,9 @@
-name: Internal Tasks
-description: "Tasks related to internal activities"
-title: "INTT: "
-assignees: ["prakarsh-dt","pawan-mehta-dt"]
+name: SRE Tasks
+description: "Tasks related to SRE activities"
+title: "SRE: "
+assignees: ["prakarsh-dt","tayalrishabh96"]
 projects: ["devtron-labs/6"]
-labels: ["INTERNAL"]
+labels: ["SRE"]
 body:
   - type: dropdown
     id: task-type
@@ -11,15 +11,11 @@ body:
       label: Task type
       description: Which type of task is this
       options:
-        - Devtron Product
-        - Cleanup
-        - Developers queries
-        - QA queries
-        - Security
-        - Compliances
-        - Installer
-        - Releases
-        - Automation
+        - Devtron Services
+        - External tools
+        - Monitoring/Dashboards
+        - Alerting
+        - Others
   - type: textarea
     id: task-description
     validations:
