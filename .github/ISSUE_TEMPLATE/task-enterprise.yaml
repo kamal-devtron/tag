@@ -1,5 +1,5 @@
 name: Enterprise Task
-description: "Describe the task"
+description: "Tasks related to an Enterprise"
 title: "ENTT: "
 assignees: ["prakarsh-dt"]
 projects: ["devtron-labs/6"]
