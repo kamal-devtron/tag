@@ -4,6 +4,20 @@ title: "INTT: "
 assignees: ["prakarsh-dt",]
 projects: ["devtron-labs/6"]
 body:
+  - type: dropdown
+    id: task-type
+    attributes:
+      label: Task type
+      description: Which type of task is this
+      options:
+        - Devtron Product
+        - Cleanup
+        - Developers queries
+        - QA queries
+        - Security
+        - Compliances
+        - Installer
+        - Releases
   - type: textarea
     id: task-description
     validations:
