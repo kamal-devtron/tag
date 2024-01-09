@@ -3,7 +3,7 @@ description: "Tasks related to an Enterprise"
 title: "ENTT: "
 assignees: ["prakarsh-dt"]
 projects: ["devtron-labs/6"]
-labels: ["ENT"]
+labels: ["ENTERPRISE"]
 body:
   - type: dropdown
     id: enterprise-name
