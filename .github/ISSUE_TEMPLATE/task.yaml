@@ -1,5 +1,5 @@
 name: Task
-description: "Describe the task"
+description: "Generic Tasks"
 title: "TASK: "
 assignees: ["prakarsh-dt",]
 projects: ["devtron-labs/6"]
