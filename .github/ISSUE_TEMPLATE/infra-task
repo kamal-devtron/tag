@@ -1,0 +1,36 @@
+name: Infra Task
+description: "Describe the task"
+title: "INFRA: "
+assignees: ["prakarsh-dt"]
+projects: ["devtron-labs/6"]
+labels: ["INFRA"]
+body:
+  - type: dropdown
+    id: provider-name
+    attributes:
+      label: Cloud provider name
+      description: Which Cloud provider is this task related to
+      options:
+        - AWS
+        - Azure
+        - GCP
+        - On premise
+        - OCP
+        - Others
+
+  - type: textarea
+    id: task-description
+    validations:
+      required: true
+    attributes:
+      label: "Task description"
+      description: "A clear and concise description of what the task is."
+      placeholder: "You should add ..."
+  - type: textarea
+    id: tasklist
+    validations:
+      required: false
+    attributes:
+      label: "Subtasks List (If any)"
+      description: "A clear list of sub-tasks if any. The list items may contain the link to other github issues or just the text."
+      placeholder: "- [ ]  https://github.com/devtron-labs/devtron/issues/4482 (Sub-task link, the sub task is automatically marked completed when the issue is closed )"
