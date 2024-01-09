@@ -1,5 +1,5 @@
-name: Internal Tasks
-description: "Tasks related to internal activities"
+name: SRE Tasks
+description: "Tasks related to SRE activities"
 title: "SRE: "
 assignees: ["prakarsh-dt","tayalrishabh96"]
 projects: ["devtron-labs/6"]
