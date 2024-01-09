@@ -19,6 +19,7 @@ body:
         - Compliances
         - Installer
         - Releases
+        - Automation
   - type: textarea
     id: task-description
     validations:
