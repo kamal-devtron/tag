@@ -1,9 +1,9 @@
-orchestrator: no
+orchestrator: yes
 git-sensor: no
-dashboard: no
+dashboard: yes
 notifier: no
 lens: no
-kubelink: no
+kubelink: yes
 kubewatch: no
 casbin: no
 image-scanner: no
