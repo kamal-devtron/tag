@@ -9,7 +9,7 @@
     - name: CM_DATA
       value: '{}'
 - name: dashboard-release
-  dependencies: ["update-dashboard-cm"]
+  dependencies: ["update-dashboard-cm","orchestrator-release"]
   template: trigger-deploy
   arguments:
     parameters:
