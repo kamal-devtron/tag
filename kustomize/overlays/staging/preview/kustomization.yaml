@@ -1,0 +1,38 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+labels:
+- includeSelectors: true
+  pairs:
+    enterprise: preview
+
+# namespace: devtroncd
+resources:
+- ../../base/
+
+patches:
+- patch: |-
+    - op: replace
+      path: /spec/templates/0/dag/tasks/0/arguments/parameters/1/value
+      value: "demo-env"
+    - op: replace
+      path: /spec/templates/0/dag/tasks/1/arguments/parameters/1/value
+      value: "demo-env"
+    - op: replace
+      path: /spec/templates/0/dag/tasks/2/arguments/parameters/1/value
+      value: "demo-env"
+    - op: replace
+      path: /spec/templates/0/dag/tasks/3/arguments/parameters/1/value
+      value: "demo-env"
+
+    - op: replace
+      path: /spec/arguments/parameters/3/value
+      value: "staging"
+  target:
+    group: argoproj.io
+    version: v1alpha1
+    kind: Workflow
+    name: release
+
+
+namePrefix: preview-
+nameSuffix: -wf
