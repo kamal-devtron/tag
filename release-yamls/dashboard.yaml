@@ -7,7 +7,7 @@
     - name: CM_NAMES
       value: dashboard-cm
     - name: CM_DATA
-      value: '{"replace":{"DEMO_KEY":"DEMO_VALUE"}}'
+      value: '{}'
 - name: dashboard-release
   dependencies: ["update-dashboard-cm"]
   template: trigger-deploy
@@ -16,4 +16,4 @@
     - name: APP_NAME
       value: dashboard
     - name: SOURCE_COMMIT_HASH
-      value: 1be6f58b3afb0b4827a370bc71740beec8247a68
+      value: 19dba0058aa8814b00bcdd29ae66c7a5ba71e4be
