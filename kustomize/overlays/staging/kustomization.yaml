@@ -22,7 +22,7 @@ patches:
       value: "staging"
     - op: replace
       path: /spec/arguments/parameters/4/value
-      value: "staging"
+      value: "staging-dcd"
   target:
     group: argoproj.io
     version: v1alpha1
