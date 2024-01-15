@@ -12,26 +12,11 @@ resources:
 patches:
 - patch: |-
     - op: replace
-      path: /spec/templates/0/dag/tasks/0/arguments/parameters/1/value
-      value: "preview-dcd"
-    - op: replace
-      path: /spec/templates/0/dag/tasks/1/arguments/parameters/1/value
-      value: "preview-dcd"
-    - op: replace
-      path: /spec/templates/0/dag/tasks/2/arguments/parameters/1/value
-      value: "preview-dcd"
-    - op: replace
-      path: /spec/templates/0/dag/tasks/3/arguments/parameters/1/value
-      value: "preview-dcd"
-    - op: replace
-      path: /spec/templates/0/dag/tasks/4/arguments/parameters/1/value
-      value: "preview-dcd"
-    - op: replace
-      path: /spec/templates/0/dag/tasks/5/arguments/parameters/1/value
-      value: "preview-dcd"
-    - op: replace
       path: /spec/arguments/parameters/3/value
       value: "preview"
+    - op: replace
+      path: /spec/arguments/parameters/3/value
+      value: "preview-dcd"
   target:
     group: argoproj.io
     version: v1alpha1
