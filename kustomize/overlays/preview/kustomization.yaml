@@ -3,7 +3,7 @@ kind: Kustomization
 labels:
 - includeSelectors: true
   pairs:
-    enterprise: staging
+    enterprise: preview
 
 # namespace: devtroncd
 resources:
@@ -15,7 +15,7 @@ patches:
       path: /spec/arguments/parameters/3/value
       value: "preview"
     - op: replace
-      path: /spec/arguments/parameters/3/value
+      path: /spec/arguments/parameters/4/value
       value: "preview-dcd"
   target:
     group: argoproj.io
@@ -24,5 +24,5 @@ patches:
     name: release
 
 
-namePrefix: stage-
+namePrefix: preview-
 nameSuffix: -wf
