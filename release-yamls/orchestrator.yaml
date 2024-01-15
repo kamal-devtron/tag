@@ -7,7 +7,7 @@
     - name: CM_NAMES
       value: orchestrator-cm
     - name: CM_DATA
-      value: '{"replace":{"DEVTRON_DEX_SECRET_NAMESPACE":"devtroncd"}}'
+      value: '{"replace":{"DEVTRON_DEX_SECRET_NAMESPACE":"devtroncd"},"replace":{"ENABLE_ASYNC_INSTALL_DEVTRON_CHART":"true"}}'
 - name: orchestrator-release
   dependencies: ["update-orchestrator-cm","kubelink-release"]
   template: trigger-deploy
@@ -16,4 +16,4 @@
     - name: APP_NAME
       value: orchestrator
     - name: SOURCE_COMMIT_HASH
-      value: 743070316aa13127fd11c0f74e8fe9aee3095c0d
+      value: 6b5b990a50bc87686aa9ff3f46d1dfaad4fd92c8
