@@ -9,7 +9,7 @@ on:
       - reopened
       - unlabeled
     branches:    
-      - 'release-dev'
+      - release-dev
   
 jobs:
   validate-PR:
