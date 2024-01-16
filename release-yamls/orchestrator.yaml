@@ -7,7 +7,7 @@
     - name: CM_NAMES
       value: orchestrator-cm
     - name: CM_DATA
-      value: '{"replace":{"DEVTRON_DEX_SECRET_NAMESPACE":"devtroncd"},"replace":{"ENABLE_ASYNC_INSTALL_DEVTRON_CHART":"true"}}'
+      value: '{"replace":{"DEVTRON_DEX_SECRET_NAMESPACE":"devtroncd","ENABLE_ASYNC_INSTALL_DEVTRON_CHART":"true"}}'
 - name: orchestrator-release
   dependencies: ["update-orchestrator-cm","kubelink-release"]
   template: trigger-deploy
