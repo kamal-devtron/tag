@@ -16,4 +16,4 @@
     - name: APP_NAME
       value: kubelink
     - name: SOURCE_COMMIT_HASH
-      value: 1be6f58b3afb0b4827a370bc71740beec8247a68
+      value: b9bff56e742cf35b566e0ee1ee1832500f33228b
