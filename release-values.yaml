@@ -1,6 +1,6 @@
 orchestrator: yes
 git-sensor: no
-dashboard: no
+dashboard: yes
 notifier: no
 lens: no
 kubelink: yes
