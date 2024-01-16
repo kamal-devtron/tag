@@ -7,7 +7,7 @@
     - name: CM_NAMES
       value: kubelink-cm
     - name: CM_DATA
-      value: '{}'
+      value: '{"replace":{"DEMO_KEY":"DEMO_VALUE"}}'
 - name: kubelink-release
   dependencies: ["update-kubelink-cm"]
   template: trigger-deploy
