@@ -42,6 +42,7 @@ body:
         - Releases
         - Automation
         - SRE
+        - Infra
   - type: input
     id: zoho-ticket
     attributes:
