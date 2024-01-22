@@ -29,6 +29,8 @@ spec:
       value: devtron
     - name: ENV_NAME
       value: cd-devtroncd
+    - name: ENV_ID
+      value: None
   templates:
   - name: release
     dag:
@@ -56,10 +58,6 @@ spec:
     inputs:
       parameters:
       - name: APP_NAMES
-      - name: ENV_NAMES
-        default: "None"
-      - name: ENV_IDS
-        default: "None"
       - name: IS_GLOBAL
         default: "false"
       - name: CM_NAMES
@@ -106,7 +104,6 @@ spec:
     inputs:
       parameters:
       - name: APP_NAME
-      - name: ENV_NAME
       - name: SOURCE_COMMIT_HASH
       - name: TIMEOUT_SECONDS
         default: "600"
