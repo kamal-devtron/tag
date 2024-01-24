@@ -1,0 +1,25 @@
+name: send-release-note
+
+# Controls when the workflow will run
+on:
+  pull_request_target:
+    types:
+      - closed
+    branches:
+      - release-dev
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  send_release_note:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+    - uses: tsickert/discord-webhook@v5.3.0
+      with:
+        username: Release-note
+        content: ${{ github.event.pull_request.body }}
+        webhook-url: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        
