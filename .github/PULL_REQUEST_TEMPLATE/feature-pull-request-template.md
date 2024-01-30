@@ -14,8 +14,10 @@ feat: Functionality to observe cost at cluster level
 ## PR Links
 <!--
 Include all the relevant PR links in a list format
+Example:
+- [ ] https://github.com/devtron-labs/devtron/pull/123
 -->
-- [ ] https://github.com/devtron-labs/enterprise-release/pull/137
+- [ ] 
 
 ## Microservices
 - [ ] Orchestrator
@@ -61,7 +63,7 @@ git-sensor:fix-issue-10000/067a30dac6436140d284f42804bb72d7756381b1
 <!--
 If a release is marked MAJOR, additional PR approval from respective code-owners is required
 -->
-- [ ] Yes
+- [ ] Yes <@800718775883268117> <@915555407949348875> <@983236983583293510>
 
 ## PR Checklist:
 * [ ] PR has relevant title tag (feat, fix, perf, chore)
