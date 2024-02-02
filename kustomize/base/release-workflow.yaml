@@ -34,7 +34,178 @@ spec:
   templates:
   - name: release
     dag:
-      tasks: []
+      tasks:
+      - name: update-orchestrator-cm
+        template: bulk-edit
+        arguments:
+          parameters:
+          - name: APP_NAMES
+            value: orchestrator
+          - name: CM_NAMES
+            value: orchestrator-cm
+          - name: CM_DATA
+            value: '{"replace":{"IMAGE_SCAN_MAX_RETRIES":"3","IMAGE_SCAN_RETRY_DELAY":"5","DEFAULT_CI_IMAGE":"quay.io/devtron/ci-runner:742fcbcb-515-20847","NOTIFICATION_TOKEN_EXPIRY_TIME_HOURS":"720","CASBIN_DATABASE":"casbin","PROXY_SERVICE_CONFIG":"{}","IMAGE_SCAN_MAX_RETRIES":"3","IMAGE_SCAN_RETRY_DELAY":"5"}}'
+      - name: orchestrator-release
+        dependencies: ["update-orchestrator-cm", "kubelink-release"]
+        template: trigger-deploy
+        arguments:
+          parameters:
+          - name: APP_NAME
+            value: orchestrator
+          - name: SOURCE_COMMIT_HASH
+            value: 24b6d95dd0c775c4c510f786f0c114b4f46b4a2f
+      - name: update-kubewatch-cm
+        template: bulk-edit
+        arguments:
+          parameters:
+          - name: APP_NAMES
+            value: kubewatch
+          - name: CM_NAMES
+            value: kubewatch-cm
+          - name: CM_DATA
+            value: '{"replace":{"DEMO_KEY":"DEMO_VALUE"}}'
+      - name: kubewatch-release
+        dependencies: ["update-kubewatch-cm"]
+        template: trigger-deploy
+        arguments:
+          parameters:
+          - name: APP_NAME
+            value: kubewatch
+          - name: SOURCE_COMMIT_HASH
+            value: 8d517c0dbfa5d86b580c4a0f1f1ea9dd11961e2b
+      - name: update-git-sensor-cm
+        template: bulk-edit
+        arguments:
+          parameters:
+          - name: APP_NAMES
+            value: git-sensor
+          - name: CM_NAMES
+            value: git-sensor-cm
+          - name: CM_DATA
+            value: '{"replace":{"DEMO_KEY":"DEMO_VALUE"}}'
+      - name: git-sensor-release
+        dependencies: ["update-git-sensor-cm"]
+        template: trigger-deploy
+        arguments:
+          parameters:
+          - name: APP_NAME
+            value: git-sensor
+          - name: SOURCE_COMMIT_HASH
+            value: 2c4171a7b880c4dab3d067b410b51c38edc06d44
+      - name: update-lens-cm
+        template: bulk-edit
+        arguments:
+          parameters:
+          - name: APP_NAMES
+            value: lens
+          - name: CM_NAMES
+            value: lens-cm
+          - name: CM_DATA
+            value: '{"replace":{"DEMO_KEY":"DEMO_VALUE"}}'
+      - name: lens-release
+        dependencies: ["update-lens-cm"]
+        template: trigger-deploy
+        arguments:
+          parameters:
+          - name: APP_NAME
+            value: lens
+          - name: SOURCE_COMMIT_HASH
+            value: 98130668d78f45dc963559039d9a06231edda280
+      - name: update-notifier-cm
+        template: bulk-edit
+        arguments:
+          parameters:
+          - name: APP_NAMES
+            value: notifier-deploy
+          - name: CM_NAMES
+            value: notifier-cm
+          - name: CM_DATA
+            value: '{"replace":{"DEMO_KEY":"DEMO_VALUE"}}'
+      - name: notifier-release
+        dependencies: ["update-notifier-cm"]
+        template: trigger-deploy
+        arguments:
+          parameters:
+          - name: APP_NAME
+            value: notifier-deploy
+          - name: SOURCE_COMMIT_HASH
+            value: e4ffc71a3c0da01b7c20b111cfbc01f23f6633d9
+      - name: update-image-scanner-cm
+        template: bulk-edit
+        arguments:
+          parameters:
+          - name: APP_NAMES
+            value: image-scanner-new
+          - name: CM_NAMES
+            value: image-scanner-cm
+          - name: CM_DATA
+            value: '{"replace":{"DEMO_KEY":"DEMO_VALUE"}}'
+      - name: image-scanner-release
+        dependencies: ["update-image-scanner-cm"]
+        template: trigger-deploy
+        arguments:
+          parameters:
+          - name: APP_NAME
+            value: image-scanner-new
+          - name: SOURCE_COMMIT_HASH
+            value: 28f95d21d8d92ca61adefdc3f64958bf7afb683e
+      - name: update-kubelink-cm
+        template: bulk-edit
+        arguments:
+          parameters:
+          - name: APP_NAMES
+            value: kubelink
+          - name: CM_NAMES
+            value: kubelink-cm
+          - name: CM_DATA
+            value: '{"replace":{"DEMO_KEY":"DEMO_VALUE"}}'
+      - name: kubelink-release
+        dependencies: ["update-kubelink-cm"]
+        template: trigger-deploy
+        arguments:
+          parameters:
+          - name: APP_NAME
+            value: kubelink
+          - name: SOURCE_COMMIT_HASH
+            value: 7e8ed5e2f56f84d3df98b8d0d0b3549709e86574
+      - name: update-casbin-cm
+        template: bulk-edit
+        arguments:
+          parameters:
+          - name: APP_NAMES
+            value: casbin
+          - name: CM_NAMES
+            value: casbin-cm
+          - name: CM_DATA
+            value: '{"replace":{"DEMO_KEY":"DEMO_VALUE"}}'
+      - name: casbin-release
+        dependencies: ["update-casbin-cm"]
+        template: trigger-deploy
+        arguments:
+          parameters:
+          - name: APP_NAME
+            value: casbin
+          - name: SOURCE_COMMIT_HASH
+            value: a3ec2dbe780691683afd597ca2380f9973b24f53
+      - name: update-dashboard-cm
+        template: bulk-edit
+        arguments:
+          parameters:
+          - name: APP_NAMES
+            value: dashboard
+          - name: CM_NAMES
+            value: dashboard-cm
+          - name: CM_DATA
+            value: '{"replace":{"LOGIN_DT_LOGO":"","SIDEBAR_DT_LOGO":""}}'
+      - name: dashboard-release
+        dependencies: ["update-dashboard-cm", "orchestrator-release"]
+        template: trigger-deploy
+        arguments:
+          parameters:
+          - name: APP_NAME
+            value: dashboard
+          - name: SOURCE_COMMIT_HASH
+            value: 2327bac105f542ea0cc4e0c25430dd9d4987f52d
 
   - name: notify
     steps:
