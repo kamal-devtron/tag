@@ -16,4 +16,4 @@
     - name: APP_NAME
       value: notifier
     - name: SOURCE_COMMIT_HASH
-      value: 1be6f58b3afb0b4827a370bc71740beec8247a68
+      value: e4ffc71a3c0da01b7c20b111cfbc01f23f6633d9

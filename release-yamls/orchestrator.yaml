@@ -7,7 +7,7 @@
     - name: CM_NAMES
       value: orchestrator-cm
     - name: CM_DATA
-      value: '{"replace":{"DEVTRON_DEX_SECRET_NAMESPACE":"devtroncd","ENABLE_ASYNC_INSTALL_DEVTRON_CHART":"true"}}'
+      value: '{"replace":{"IMAGE_SCAN_MAX_RETRIES":"3","IMAGE_SCAN_RETRY_DELAY":"5","DEFAULT_CI_IMAGE":"quay.io/devtron/ci-runner:742fcbcb-515-20847","NOTIFICATION_TOKEN_EXPIRY_TIME_HOURS":"720","CASBIN_DATABASE":"casbin","PROXY_SERVICE_CONFIG":"{}","IMAGE_SCAN_MAX_RETRIES":"3","IMAGE_SCAN_RETRY_DELAY":"5"}}'
 - name: orchestrator-release
   dependencies: ["update-orchestrator-cm","kubelink-release"]
   template: trigger-deploy
@@ -16,4 +16,4 @@
     - name: APP_NAME
       value: orchestrator
     - name: SOURCE_COMMIT_HASH
-      value: 6b5b990a50bc87686aa9ff3f46d1dfaad4fd92c8
+      value: 24b6d95dd0c775c4c510f786f0c114b4f46b4a2f
