@@ -3,7 +3,7 @@
   arguments:
     parameters:
     - name: APP_NAMES
-      value: image-scanner
+      value: image-scanner-new
     - name: CM_NAMES
       value: image-scanner-cm
     - name: CM_DATA
@@ -14,6 +14,6 @@
   arguments:
     parameters:
     - name: APP_NAME
-      value: image-scanner
+      value: image-scanner-new
     - name: SOURCE_COMMIT_HASH
       value: 28f95d21d8d92ca61adefdc3f64958bf7afb683e
