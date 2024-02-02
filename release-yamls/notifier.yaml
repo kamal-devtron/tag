@@ -3,7 +3,7 @@
   arguments:
     parameters:
     - name: APP_NAMES
-      value: notifier
+      value: notifier-deploy
     - name: CM_NAMES
       value: notifier-cm
     - name: CM_DATA
@@ -14,6 +14,6 @@
   arguments:
     parameters:
     - name: APP_NAME
-      value: notifier
+      value: notifier-deploy
     - name: SOURCE_COMMIT_HASH
       value: e4ffc71a3c0da01b7c20b111cfbc01f23f6633d9
