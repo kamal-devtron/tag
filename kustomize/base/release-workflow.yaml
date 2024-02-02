@@ -296,7 +296,7 @@ spec:
         value: "{{workflow.parameters.USE_HTTPS}}"
       - name: APP_NAME
         value: "{{inputs.parameters.APP_NAME}}"
-      - name: ENV_NAME
+      - name: ENV_NAMES
         value: "{{workflow.parameters.ENV_NAME}}"
       - name: SOURCE_COMMIT_HASH
         value: "{{inputs.parameters.SOURCE_COMMIT_HASH}}"
