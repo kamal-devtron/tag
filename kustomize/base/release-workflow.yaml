@@ -29,6 +29,8 @@ spec:
       value: devtron
     - name: ENV_NAME
       value: cd-devtroncd
+    - name: ENV_ID
+      value: None
   templates:
   - name: release
     dag:
