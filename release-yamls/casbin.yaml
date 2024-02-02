@@ -16,4 +16,4 @@
     - name: APP_NAME
       value: casbin
     - name: SOURCE_COMMIT_HASH
-      value: 1be6f58b3afb0b4827a370bc71740beec8247a68
+      value: a3ec2dbe780691683afd597ca2380f9973b24f53

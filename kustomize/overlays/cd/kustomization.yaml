@@ -3,7 +3,7 @@ kind: Kustomization
 labels:
 - includeSelectors: true
   pairs:
-    enterprise: bharatpe
+    enterprise: cd
 
 # namespace: devtroncd
 resources:
@@ -13,10 +13,10 @@ patches:
 - patch: |-
     - op: replace
       path: /spec/arguments/parameters/3/value
-      value: "bp"
+      value: "cd"
     - op: replace
       path: /spec/arguments/parameters/4/value
-      value: "bp-dcd"
+      value: "cd-devtroncd"
   target:
     group: argoproj.io
     version: v1alpha1
@@ -24,5 +24,5 @@ patches:
     name: release
 
 
-namePrefix: bp-
+namePrefix: cd-
 nameSuffix: -wf

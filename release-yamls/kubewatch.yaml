@@ -16,4 +16,4 @@
     - name: APP_NAME
       value: kubewatch
     - name: SOURCE_COMMIT_HASH
-      value: 1be6f58b3afb0b4827a370bc71740beec8247a68
+      value: 8d517c0dbfa5d86b580c4a0f1f1ea9dd11961e2b

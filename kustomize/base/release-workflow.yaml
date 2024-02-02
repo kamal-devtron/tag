@@ -29,67 +29,13 @@ spec:
       value: devtron
     - name: ENV_NAME
       value: cd-devtroncd
+    - name: ENV_ID
+      value: None
   templates:
   - name: release
     dag:
-      tasks:
-      - name: update-orchestrator-cm
-        template: bulk-edit
-        arguments:
-          parameters:
-          - name: APP_NAMES
-            value: orchestrator
-          - name: CM_NAMES
-            value: orchestrator-cm
-          - name: CM_DATA
-            value: '{"replace":{"DEVTRON_DEX_SECRET_NAMESPACE":"devtroncd","ENABLE_ASYNC_INSTALL_DEVTRON_CHART":"true"}}'
-      - name: orchestrator-release
-        dependencies: ["update-orchestrator-cm", "kubelink-release"]
-        template: trigger-deploy
-        arguments:
-          parameters:
-          - name: APP_NAME
-            value: orchestrator
-          - name: SOURCE_COMMIT_HASH
-            value: 6b5b990a50bc87686aa9ff3f46d1dfaad4fd92c8
-      - name: update-kubelink-cm
-        template: bulk-edit
-        arguments:
-          parameters:
-          - name: APP_NAMES
-            value: kubelink
-          - name: CM_NAMES
-            value: kubelink-cm
-          - name: CM_DATA
-            value: '{"replace":{"DEMO_KEY":"DEMO_VALUE"}}'
-      - name: kubelink-release
-        dependencies: ["update-kubelink-cm"]
-        template: trigger-deploy
-        arguments:
-          parameters:
-          - name: APP_NAME
-            value: kubelink
-          - name: SOURCE_COMMIT_HASH
-            value: b9bff56e742cf35b566e0ee1ee1832500f33228b
-      - name: update-dashboard-cm
-        template: bulk-edit
-        arguments:
-          parameters:
-          - name: APP_NAMES
-            value: dashboard
-          - name: CM_NAMES
-            value: dashboard-cm
-          - name: CM_DATA
-            value: '{"replace":{"DEMO_KEY":"DEMO_VALUE"}}'
-      - name: dashboard-release
-        dependencies: ["update-dashboard-cm", "orchestrator-release"]
-        template: trigger-deploy
-        arguments:
-          parameters:
-          - name: APP_NAME
-            value: dashboard
-          - name: SOURCE_COMMIT_HASH
-            value: 19dba0058aa8814b00bcdd29ae66c7a5ba71e4be
+      tasks: []
+
   - name: notify
     steps:
     - - name: notify-success
@@ -112,10 +58,6 @@ spec:
     inputs:
       parameters:
       - name: APP_NAMES
-      - name: ENV_NAMES
-        default: "None"
-      - name: ENV_IDS
-        default: "None"
       - name: IS_GLOBAL
         default: "false"
       - name: CM_NAMES
@@ -127,7 +69,7 @@ spec:
       - name: SECRET_DATA
         default: "null"
     container:
-      image: quay.io/devtron/devtron-utils:workflow-dag-v2
+      image: quay.io/devtron/devtron-utils:workflow-dag-v2.1
       command: [sh, -c]
       args: ["python3 bulk-edit.py"]
       env:
@@ -162,12 +104,11 @@ spec:
     inputs:
       parameters:
       - name: APP_NAME
-      - name: ENV_NAME
       - name: SOURCE_COMMIT_HASH
       - name: TIMEOUT_SECONDS
         default: "600"
     container:
-      image: quay.io/devtron/devtron-utils:workflow-dag-v2
+      image: quay.io/devtron/devtron-utils:workflow-dag-v2.1
       command: [sh, -c]
       args: ["python3 trigger-deploy.py"]
       env:
