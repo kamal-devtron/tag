@@ -3,7 +3,7 @@ kind: Kustomization
 labels:
 - includeSelectors: true
   pairs:
-    enterprise: bharatpe
+    enterprise: bird-dev
 
 # namespace: devtroncd
 resources:
@@ -13,10 +13,10 @@ patches:
 - patch: |-
     - op: replace
       path: /spec/arguments/parameters/3/value
-      value: "bp"
+      value: "bird-dev"
     - op: replace
       path: /spec/arguments/parameters/4/value
-      value: "bp-dcd"
+      value: "bird-dev-dcd"
   target:
     group: argoproj.io
     version: v1alpha1
@@ -24,5 +24,5 @@ patches:
     name: release
 
 
-namePrefix: bp-
+namePrefix: bird-dev-
 nameSuffix: -wf
