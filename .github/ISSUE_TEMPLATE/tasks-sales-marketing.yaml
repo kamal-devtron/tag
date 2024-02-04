@@ -1,0 +1,36 @@
+name: Sales/Marketing Tasks
+description: "Tasks related to Sales/Marketing activities"
+title: "SMAR: "
+assignees: ["prakarsh-dt","Abhinav-26"]
+projects: ["devtron-labs/6"]
+labels: ["SALES/MARKETING"]
+body:
+  - type: dropdown
+    id: task-type
+    attributes:
+      label: Task type
+      description: Which type of task is this
+      options:
+        - Product Demo
+        - Sales 
+        - Partnership
+        - Pre-sales
+        - Onboarding
+        - Cadence call
+
+  - type: textarea
+    id: task-description
+    validations:
+      required: true
+    attributes:
+      label: "Task description"
+      description: "A clear and concise description of what the task is."
+      placeholder: "You should add ..."
+  - type: textarea
+    id: tasklist
+    validations:
+      required: false
+    attributes:
+      label: "Subtask (If any)"
+      description: "A clear list of sub-tasks if any. The list items may contain the link to other github issues or just the text."
+      placeholder: "- [ ]  https://github.com/devtron-labs/devtron/issues/4482 (Sub-task link, the sub task is automatically marked completed when the issue is closed )"

@@ -31,6 +31,7 @@ spec:
       value: cd-devtroncd
     - name: ENV_ID
       value: None
+
   templates:
   - name: release
     dag:
@@ -206,7 +207,6 @@ spec:
             value: dashboard
           - name: SOURCE_COMMIT_HASH
             value: 2327bac105f542ea0cc4e0c25430dd9d4987f52d
-
   - name: notify
     steps:
     - - name: notify-success
