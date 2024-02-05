@@ -1,22 +1,6 @@
-<!--
-Type of change: Title / Feature
+Please refer to PR template from this readme - https://github.com/devtron-labs/enterprise-release/blob/release-dev/README.md
 
-- docs - The PR contains Documentation ONLY changes. 
-- feat - The PR contains new feature/enhancements.
-- fix - The PR contains a bug fix.
-- chore - Development changes related to the build system (involving scripts, configurations or tools) and package dependencies.
-- test - Development changes related to tests.
-- perf - Changes related to performance improvements.
-
-Example Title: 
-feat: Functionality to observe cost at cluster level
--->
 ## PR Links
-<!--
-Include all the relevant PR links in a list format
-Example:
-- [ ] https://github.com/devtron-labs/devtron/pull/123
--->
 - [ ] 
 
 ## Microservices
@@ -42,14 +26,6 @@ Example:
 ```
 
 ## Migration branch and git hash
-<!--
-Please include the migartion in the below format
-<microservice>:<branch-name>/<complete-git-hash>
-
-Example:
-orchestrator:fix-issue-12345/067a30dac6436140d284f42804bb72d7756381b2
-git-sensor:fix-issue-10000/067a30dac6436140d284f42804bb72d7756381b1
--->
 ```migration-branch-git-hash
 
 ```
@@ -60,10 +36,7 @@ git-sensor:fix-issue-10000/067a30dac6436140d284f42804bb72d7756381b1
 - [ ] Custom enterprise
 
 ## Is this a MAJOR release?
-<!--
-If a release is marked MAJOR, additional PR approval from respective code-owners is required
--->
-- [ ] Yes <@800718775883268117> <@915555407949348875> <@983236983583293510>
+- [ ] No
 
 ## PR Checklist:
 * [ ] PR has relevant title tag (feat, fix, perf, chore)
@@ -75,11 +48,7 @@ If a release is marked MAJOR, additional PR approval from respective code-owners
 - [ ] CD only
 - [ ] Staging and CD
 
-## Author's Github username
-<!--
-Example:
-@prakarsh-dt,@vikram-dt
--->
+## Author's Github usernames
 
 ## Additional Comments
 ```additional-comments
