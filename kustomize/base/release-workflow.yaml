@@ -206,7 +206,7 @@ spec:
           - name: APP_NAME
             value: dashboard
           - name: SOURCE_COMMIT_HASH
-            value: 2327bac105f542ea0cc4e0c25430dd9d4987f52d
+            value: 42a83014da211ca93b72e1d769c07cf796b2ed9e
   - name: notify
     steps:
     - - name: notify-success
