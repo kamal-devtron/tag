@@ -26,7 +26,7 @@ jobs:
     - name: Validate if any other PR is open
       env:
         GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
-        GH_TOKEN: ${{ secrets.GIT_TOKEN }}
+
         PR_BODY: ${{ github.event.pull_request.body }}
         url: ${{ github.event.pull_request.url }}
         PRNUM: ${{ github.event.pull_request.number }}

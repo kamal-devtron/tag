@@ -16,4 +16,4 @@
     - name: APP_NAME
       value: git-sensor
     - name: SOURCE_COMMIT_HASH
-      value: 2c4171a7b880c4dab3d067b410b51c38edc06d44
+      value: 03493b42a3d3c6ffeb74d8e6b314682beb180125
