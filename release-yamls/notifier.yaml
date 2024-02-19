@@ -16,5 +16,4 @@
     - name: APP_NAME
       value: notifier-deploy
     - name: SOURCE_COMMIT_HASH
-      value: e4ffc71a3c0da01b7c20b111cfbc01f23f6633d9 
-      # same as old tag v0.1.0
+      value: e4ffc71a3c0da01b7c20b111cfbc01f23f6633d9

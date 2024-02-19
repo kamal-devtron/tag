@@ -7,13 +7,13 @@
     - name: CM_NAMES
       value: dashboard-cm
     - name: CM_DATA
-      value: '{"remove":{"USE_V2":"true"}}'
+      value: '{"replace":{"LOGIN_DT_LOGO":"","SIDEBAR_DT_LOGO":""}}'
 - name: dashboard-release
-  dependencies: ["update-dashboard-cm"]
+  dependencies: ["update-dashboard-cm","orchestrator-release"]
   template: trigger-deploy
   arguments:
     parameters:
     - name: APP_NAME
       value: dashboard
     - name: SOURCE_COMMIT_HASH
-      value: 52a8cc5b15658452e37f7393c6067a304b0c0ce8
+      value: 2327bac105f542ea0cc4e0c25430dd9d4987f52d

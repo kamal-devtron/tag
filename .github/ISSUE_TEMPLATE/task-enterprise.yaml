@@ -26,9 +26,6 @@ body:
         - OTPLess
         - TheKhelGroup
         - Lemnisk
-        - Spinny
-        - Chitale
-        - Indiamart
   - type: dropdown
     id: task-type
     attributes:

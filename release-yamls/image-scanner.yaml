@@ -16,4 +16,4 @@
     - name: APP_NAME
       value: image-scanner-new
     - name: SOURCE_COMMIT_HASH
-      value: 1e0b2312a0fa49c4189b194ada75706cae576457
+      value: 28f95d21d8d92ca61adefdc3f64958bf7afb683e

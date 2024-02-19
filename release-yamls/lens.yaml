@@ -16,4 +16,4 @@
     - name: APP_NAME
       value: lens
     - name: SOURCE_COMMIT_HASH
-      value: 70577aaa1ad185d4e145999bccf072144647eddc
+      value: 98130668d78f45dc963559039d9a06231edda280
