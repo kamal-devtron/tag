@@ -16,4 +16,4 @@
     - name: APP_NAME
       value: orchestrator
     - name: SOURCE_COMMIT_HASH
-      value: 30254d6bcbf8e749ad76f7f998a3b153c21a094c     #branch=hotfix-lockconfig-l12
+      value: c3166534eecf774325a9cfaca1052c23bd6ce499
