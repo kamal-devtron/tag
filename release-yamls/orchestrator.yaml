@@ -16,5 +16,4 @@
     - name: APP_NAME
       value: orchestrator
     - name: SOURCE_COMMIT_HASH
-      value: 6946a78d2cfda4c215027067d36b29ecdc744b63     #branch=hotfix-job-cm-data-vol
-
+      value: 640da68e426fe5e4cb9eca020401d7d24f2e58cb
