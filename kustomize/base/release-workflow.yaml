@@ -54,7 +54,7 @@ spec:
           - name: APP_NAME
             value: orchestrator
           - name: SOURCE_COMMIT_HASH
-            value: ff77c0b985109e2211b2da0249e2c8fe762b269f
+            value: 45fe7b53b9af927337b20e0ec9126a5f97b7cca5
       - name: update-kubewatch-cm
         template: bulk-edit
         arguments:
