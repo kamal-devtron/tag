@@ -19,8 +19,8 @@ jobs:
 
     - name: Set up Git with user info
       run: |
-        git config user.email "systems@devtron.ai"
-        git config user.name "systemsdt"
+        git config user.email "kamal@devtron.ai"
+        git config user.name "kamal-devtron"
         git fetch --tags
     - name: Check if PR is merged into main
       run: |
