@@ -39,7 +39,7 @@ jobs:
         OVERLAYS_DIR="overlays"
         OUTPUT_DIR="DAG"
         cd base
-        sed 's/TAG/$PR_TITLE/' release-workflow.yaml > config.yaml
+        sed "s/TAG/$PR_TITLE/" release-workflow.yaml > config.yaml
         cp config.yaml release-workflow.yaml
         cd ..
         # Ensure the output directory exists
