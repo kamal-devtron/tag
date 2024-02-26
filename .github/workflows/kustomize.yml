@@ -46,7 +46,7 @@ jobs:
         do
            echo $i
            echo $k
-           ((k++))
+           k=$(expr $k + 1)
            if [[ "$i" == "TITLE" ]]; then
            echo "yes"
            fi
