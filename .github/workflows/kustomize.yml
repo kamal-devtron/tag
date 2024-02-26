@@ -49,11 +49,13 @@ jobs:
            k=$(expr $k + 1)
            if [[ "$i" == "TITLE" ]]; then
            echo "yes"
+           yq eval ".spec.arguments.parameters[$k].value = env(PR_TITLE)" release-workflow.yaml > config.yaml
+           cp config.yaml release-workflow.yaml
            fi
         done
 
-        yq eval '.spec.arguments.parameters[6].value = env(PR_TITLE)' release-workflow.yaml > config.yaml
-        cp config.yaml release-workflow.yaml
+        
+        
         cd ..
         # Ensure the output directory exists
         mkdir -p "$OUTPUT_DIR"
