@@ -45,6 +45,9 @@ jobs:
         for i in $(yq eval '.spec.arguments.parameters[].name' release-workflow.yaml)
         do
            echo $i
+           if [[ "$i" == "TITLE" ]]; then
+           echo "yes"
+           fi
         done
         yq eval '.spec.arguments.parameters[6].value = env(PR_TITLE)' release-workflow.yaml > config.yaml
         cp config.yaml release-workflow.yaml
