@@ -33,7 +33,7 @@ jobs:
       run: |
         # Get the PR title and replace spaces with hyphens
         sudo apt update
-        sudo snap install yq -y
+        sudo snap install yq 
         PR_TITLE=$(echo '${{ github.event.pull_request.title }}' | tr ' ' '-')
         export PR_TITLE
         git checkout -b tag-releaser
