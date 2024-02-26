@@ -1,3 +1,3 @@
 # enterprise-release
 
-> todo readme for complete process yes from demo ten
+> todo readme for complete process yes from test one
