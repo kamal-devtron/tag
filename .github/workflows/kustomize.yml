@@ -32,14 +32,16 @@ jobs:
     - name: Create Release Tag
       run: |
         # Get the PR title and replace spaces with hyphens
+        sudo apt update
+        sudo apt install yq -y
         PR_TITLE=$(echo '${{ github.event.pull_request.title }}' | tr ' ' '-')
-
+        export PR_TITLE
         git checkout -b tag-releaser
         cd kustomize
         OVERLAYS_DIR="overlays"
         OUTPUT_DIR="DAG"
         cd base
-        sed "s/TAG/$PR_TITLE/" release-workflow.yaml > config.yaml
+        yq eval '.spec.arguments.parameters[6].value = env(PR_TITLE)' release-workflow.yaml > config.yaml
         cp config.yaml release-workflow.yaml
         cd ..
         # Ensure the output directory exists
