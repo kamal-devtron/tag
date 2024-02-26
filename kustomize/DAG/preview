@@ -1,0 +1,340 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  annotations:
+    workflows.argoproj.io/description: |
+      This is a sample workflow for enterprise releases using DAG
+  labels:
+    enterprise: preview
+    release: devtron
+  name: preview-release-wf
+  namespace: argo
+spec:
+  archiveLogs: true
+  arguments:
+    parameters:
+    - name: DEVTRON_BASE_URL
+      value: cd.devtron.ai
+    - name: USE_HTTPS
+      value: "true"
+    - name: LOG_LEVEL
+      value: "-1"
+    - name: ENTERPRISE_NAME
+      value: preview
+    - name: ENV_NAME
+      value: preview-dcd
+    - name: ENV_ID
+      value: None
+  artifactRepositoryRef:
+    configMap: azure-blob-wf-logs-cm
+    key: artifactRepository
+  entrypoint: release
+  onExit: notify
+  serviceAccountName: argo
+  templates:
+  - dag:
+      tasks:
+      - arguments:
+          parameters:
+          - name: APP_NAMES
+            value: orchestrator
+          - name: CM_NAMES
+            value: orchestrator-cm
+          - name: CM_DATA
+            value: '{"replace":{"IMAGE_SCAN_MAX_RETRIES":"3","IMAGE_SCAN_RETRY_DELAY":"5","DEFAULT_CI_IMAGE":"quay.io/devtron/ci-runner:742fcbcb-515-20847","NOTIFICATION_TOKEN_EXPIRY_TIME_HOURS":"720","CASBIN_DATABASE":"casbin","PROXY_SERVICE_CONFIG":"{}","IMAGE_SCAN_MAX_RETRIES":"3","IMAGE_SCAN_RETRY_DELAY":"5","USE_SOURCE_APP_BUILD_CONFIG":"true"}}'
+        name: update-orchestrator-cm
+        template: bulk-edit
+      - arguments:
+          parameters:
+          - name: APP_NAME
+            value: orchestrator
+          - name: SOURCE_COMMIT_HASH
+            value: 1750825ae3d623ffc54a3c3a4f038aa237a0d851
+        dependencies:
+        - update-orchestrator-cm
+        - kubelink-release
+        name: orchestrator-release
+        template: trigger-deploy
+      - arguments:
+          parameters:
+          - name: APP_NAMES
+            value: kubewatch
+          - name: CM_NAMES
+            value: kubewatch-cm
+          - name: CM_DATA
+            value: '{"replace":{"DEMO_KEY":"DEMO_VALUE"}}'
+        name: update-kubewatch-cm
+        template: bulk-edit
+      - arguments:
+          parameters:
+          - name: APP_NAME
+            value: kubewatch
+          - name: SOURCE_COMMIT_HASH
+            value: 8d517c0dbfa5d86b580c4a0f1f1ea9dd11961e2b
+        dependencies:
+        - update-kubewatch-cm
+        name: kubewatch-release
+        template: trigger-deploy
+      - arguments:
+          parameters:
+          - name: APP_NAMES
+            value: git-sensor
+          - name: CM_NAMES
+            value: git-sensor-cm
+          - name: CM_DATA
+            value: '{"replace":{"DEMO_KEY":"DEMO_VALUE"}}'
+        name: update-git-sensor-cm
+        template: bulk-edit
+      - arguments:
+          parameters:
+          - name: APP_NAME
+            value: git-sensor
+          - name: SOURCE_COMMIT_HASH
+            value: 9902080cbb19ac3972cf97e4657a36eb3ecb24ad
+        dependencies:
+        - update-git-sensor-cm
+        name: git-sensor-release
+        template: trigger-deploy
+      - arguments:
+          parameters:
+          - name: APP_NAMES
+            value: lens
+          - name: CM_NAMES
+            value: lens-cm
+          - name: CM_DATA
+            value: '{"replace":{"DEMO_KEY":"DEMO_VALUE"}}'
+        name: update-lens-cm
+        template: bulk-edit
+      - arguments:
+          parameters:
+          - name: APP_NAME
+            value: lens
+          - name: SOURCE_COMMIT_HASH
+            value: 98130668d78f45dc963559039d9a06231edda280
+        dependencies:
+        - update-lens-cm
+        name: lens-release
+        template: trigger-deploy
+      - arguments:
+          parameters:
+          - name: APP_NAMES
+            value: notifier-deploy
+          - name: CM_NAMES
+            value: notifier-cm
+          - name: CM_DATA
+            value: '{"replace":{"DEMO_KEY":"DEMO_VALUE"}}'
+        name: update-notifier-cm
+        template: bulk-edit
+      - arguments:
+          parameters:
+          - name: APP_NAME
+            value: notifier-deploy
+          - name: SOURCE_COMMIT_HASH
+            value: e4ffc71a3c0da01b7c20b111cfbc01f23f6633d9
+        dependencies:
+        - update-notifier-cm
+        name: notifier-release
+        template: trigger-deploy
+      - arguments:
+          parameters:
+          - name: APP_NAMES
+            value: image-scanner-new
+          - name: CM_NAMES
+            value: image-scanner-cm
+          - name: CM_DATA
+            value: '{"replace":{"DEMO_KEY":"DEMO_VALUE"}}'
+        name: update-image-scanner-cm
+        template: bulk-edit
+      - arguments:
+          parameters:
+          - name: APP_NAME
+            value: image-scanner-new
+          - name: SOURCE_COMMIT_HASH
+            value: 28f95d21d8d92ca61adefdc3f64958bf7afb683e
+        dependencies:
+        - update-image-scanner-cm
+        name: image-scanner-release
+        template: trigger-deploy
+      - arguments:
+          parameters:
+          - name: APP_NAMES
+            value: kubelink
+          - name: CM_NAMES
+            value: kubelink-cm
+          - name: CM_DATA
+            value: '{"replace":{"DEMO_KEY":"DEMO_VALUE"}}'
+        name: update-kubelink-cm
+        template: bulk-edit
+      - arguments:
+          parameters:
+          - name: APP_NAME
+            value: kubelink
+          - name: SOURCE_COMMIT_HASH
+            value: 7e8ed5e2f56f84d3df98b8d0d0b3549709e86574
+        dependencies:
+        - update-kubelink-cm
+        name: kubelink-release
+        template: trigger-deploy
+      - arguments:
+          parameters:
+          - name: APP_NAMES
+            value: casbin
+          - name: CM_NAMES
+            value: casbin-cm
+          - name: CM_DATA
+            value: '{"replace":{"DEMO_KEY":"DEMO_VALUE"}}'
+        name: update-casbin-cm
+        template: bulk-edit
+      - arguments:
+          parameters:
+          - name: APP_NAME
+            value: casbin
+          - name: SOURCE_COMMIT_HASH
+            value: a3ec2dbe780691683afd597ca2380f9973b24f53
+        dependencies:
+        - update-casbin-cm
+        name: casbin-release
+        template: trigger-deploy
+      - arguments:
+          parameters:
+          - name: APP_NAMES
+            value: dashboard
+          - name: CM_NAMES
+            value: dashboard-cm
+          - name: CM_DATA
+            value: '{"replace":{"LOGIN_DT_LOGO":"","SIDEBAR_DT_LOGO":""}}'
+        name: update-dashboard-cm
+        template: bulk-edit
+      - arguments:
+          parameters:
+          - name: APP_NAME
+            value: dashboard
+          - name: SOURCE_COMMIT_HASH
+            value: 42a83014da211ca93b72e1d769c07cf796b2ed9e
+        dependencies:
+        - update-dashboard-cm
+        - orchestrator-release
+        name: dashboard-release
+        template: trigger-deploy
+    name: release
+  - name: notify
+    steps:
+    - - arguments:
+          parameters:
+          - name: EMBED_COLOR
+            value: 65280
+        name: notify-success
+        template: notifier
+        when: '{{workflow.status}} == Succeeded'
+      - arguments:
+          parameters:
+          - name: EMBED_COLOR
+            value: 16711680
+        name: notify-failure
+        template: notifier
+        when: '{{workflow.status}} != Succeeded'
+  - container:
+      args:
+      - python3 bulk-edit.py
+      command:
+      - sh
+      - -c
+      env:
+      - name: DEVTRON_BASE_URL
+        value: '{{workflow.parameters.DEVTRON_BASE_URL}}'
+      - name: DEVTRON_API_TOKEN
+        valueFrom:
+          secretKeyRef:
+            key: token
+            name: release-dag-secret
+      - name: USE_HTTPS
+        value: '{{workflow.parameters.USE_HTTPS}}'
+      - name: LOG_LEVEL
+        value: '{{workflow.parameters.LOG_LEVEL}}'
+      - name: APP_NAMES
+        value: '{{inputs.parameters.APP_NAMES}}'
+      - name: ENV_NAMES
+        value: '{{workflow.parameters.ENV_NAME}}'
+      - name: ENV_IDS
+        value: '{{workflow.parameters.ENV_ID}}'
+      - name: IS_GLOBAL
+        value: '{{inputs.parameters.IS_GLOBAL}}'
+      - name: CM_NAMES
+        value: '{{inputs.parameters.CM_NAMES}}'
+      - name: CM_DATA
+        value: '{{inputs.parameters.CM_DATA}}'
+      - name: SECRET_NAMES
+        value: '{{inputs.parameters.SECRET_NAMES}}'
+      - name: SECRET_DATA
+        value: '{{inputs.parameters.SECRET_DATA}}'
+      image: quay.io/devtron/devtron-utils:workflow-dag-v2.1
+    inputs:
+      parameters:
+      - name: APP_NAMES
+      - default: "false"
+        name: IS_GLOBAL
+      - default: None
+        name: CM_NAMES
+      - default: "null"
+        name: CM_DATA
+      - default: None
+        name: SECRET_NAMES
+      - default: "null"
+        name: SECRET_DATA
+    name: bulk-edit
+  - container:
+      args:
+      - python3 trigger-deploy.py
+      command:
+      - sh
+      - -c
+      env:
+      - name: DEVTRON_BASE_URL
+        value: '{{workflow.parameters.DEVTRON_BASE_URL}}'
+      - name: DEVTRON_API_TOKEN
+        valueFrom:
+          secretKeyRef:
+            key: token
+            name: release-dag-secret
+      - name: LOG_LEVEL
+        value: '{{workflow.parameters.LOG_LEVEL}}'
+      - name: USE_HTTPS
+        value: '{{workflow.parameters.USE_HTTPS}}'
+      - name: APP_NAME
+        value: '{{inputs.parameters.APP_NAME}}'
+      - name: ENV_NAME
+        value: '{{workflow.parameters.ENV_NAME}}'
+      - name: SOURCE_COMMIT_HASH
+        value: '{{inputs.parameters.SOURCE_COMMIT_HASH}}'
+      - name: TIMEOUT_SECONDS
+        value: '{{inputs.parameters.TIMEOUT_SECONDS}}'
+      image: quay.io/devtron/devtron-utils:workflow-dag-v2.1
+    inputs:
+      parameters:
+      - name: APP_NAME
+      - name: SOURCE_COMMIT_HASH
+      - default: "600"
+        name: TIMEOUT_SECONDS
+    name: trigger-deploy
+  - inputs:
+      parameters:
+      - name: EMBED_COLOR
+      - default: https://artifacthub.io/image/98440df4-0317-4777-8a92-3d7aead03382@3x
+        name: AVATAR_URL
+    name: notifier
+    script:
+      command:
+      - sh
+      env:
+      - name: DISCORD_WEBHOOK_URL
+        valueFrom:
+          secretKeyRef:
+            key: discord_url
+            name: release-dag-secret
+      - name: TITLE
+        value: v1.5
+      image: curlimages/curl:8.1.2
+      source: |
+        curl -H 'Content-Type: application/json' -d '{"username": "DAG-Hook", "avatar_url": "{{inputs.parameters.AVATAR_URL}}", "embeds": [{"title": "[{{workflow.status}}] Workflow Status {{workflow.status}} for Enterprise {{workflow.parameters.ENTERPRISE_NAME}} with tag  $TITLE ", "color":{{inputs.parameters.EMBED_COLOR}}}]}' $DISCORD_WEBHOOK_URL
+  ttlStrategy:
+    secondsAfterCompletion: 3600
