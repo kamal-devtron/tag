@@ -41,6 +41,15 @@ jobs:
         OVERLAYS_DIR="overlays"
         OUTPUT_DIR="DAG"
         cd base
+        k=0
+        for i in $(yq eval '.spec.arguments.parameters[].name' release-workflow.yaml)
+        do
+           echo $i
+           ((k++))
+           if [[ "$i" == "TITLE" ]]; then
+           yq eval ".spec.arguments.parameters[$k].value = env(PR_TITLE)" release-workflow.yaml > config.yaml
+           fi
+        done
         yq eval '.spec.arguments.parameters[6].value = env(PR_TITLE)' release-workflow.yaml > config.yaml
         cp config.yaml release-workflow.yaml
         cd ..
