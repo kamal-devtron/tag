@@ -31,6 +31,8 @@ spec:
         value: cd-devtroncd
       - name: ENV_ID
         value: None
+      - name: TITLE
+        value: TAG
 
   templates:
     - name: release
@@ -313,12 +315,11 @@ spec:
         image: curlimages/curl:8.1.2
         command: [sh]
         source: |
-          curl -H 'Content-Type: application/json' -d '{"username": "DAG-Hook", "avatar_url": "{{inputs.parameters.AVATAR_URL}}", "embeds": [{"title": "[{{workflow.status}}] Workflow Status {{workflow.status}} for Enterprise {{workflow.parameters.ENTERPRISE_NAME}} with tag  $TITLE ", "color":{{inputs.parameters.EMBED_COLOR}}}]}' $DISCORD_WEBHOOK_URL
+          curl -H 'Content-Type: application/json' -d '{"username": "DAG-Hook", "avatar_url": "{{inputs.parameters.AVATAR_URL}}", "embeds": [{"title": "[{{workflow.status}}] Workflow Status {{workflow.status}} for Enterprise {{workflow.parameters.ENTERPRISE_NAME}} with tag {{workflow.parameters.TITLE}} ", "color":{{inputs.parameters.EMBED_COLOR}}}]}' $DISCORD_WEBHOOK_URL
         env:
           - name: DISCORD_WEBHOOK_URL
             valueFrom:
               secretKeyRef:
                 name: release-dag-secret
                 key: discord_url
-          - name: TITLE
-            value: TAG     
+       
