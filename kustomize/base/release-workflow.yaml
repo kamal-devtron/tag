@@ -31,6 +31,8 @@ spec:
       value: cd-devtroncd
     - name: ENV_ID
       value: None
+    - name: TITLE
+      value: TAG  
   templates:
   - name: release
     dag:
